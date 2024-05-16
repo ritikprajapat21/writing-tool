@@ -1,45 +1,30 @@
-import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import { useAuth } from "./context/auth";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import { Layout } from "antd";
+import CustomFooter from "./components/Footer";
+import { useAuth } from "./hooks/useAuth";
 
 function App() {
-	const { profile } = useAuth();
-	const navigate = useNavigate();
-	const [count, setCount] = useState(0);
+  const { profile } = useAuth();
+  const navigate = useNavigate();
 
-	useEffect(() => {
-		if (!profile) {
-			navigate("/signin");
-		}
-	}, [profile, navigate]);
+  useEffect(() => {
+    console.log(profile);
+    if (!profile) {
+      navigate("/signin");
+    }
+  }, [profile, navigate]);
 
-	return (
-		<>
-			<div>
-				<a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-					<img src={viteLogo} className="logo" alt="Vite logo" />
-				</a>
-				<a href="https://react.dev" target="_blank" rel="noreferrer">
-					<img src={reactLogo} className="logo react" alt="React logo" />
-				</a>
-			</div>
-			<h1>Vite + React</h1>
-			<div className="card">
-				<button type="button" onClick={() => setCount((count) => count + 1)}>
-					count is {count}
-				</button>
-				<p>
-					Edit <code>src/App.tsx</code> and save to test HMR
-				</p>
-			</div>
-			<p className="read-the-docs">
-				Click on the Vite and React logos to learn more
-			</p>
-		</>
-	);
+  return (
+    <>
+      <Layout style={{ height: "100vh", width: "100vw" }}>
+        <Navbar />
+        <Outlet />
+        <CustomFooter />
+      </Layout>
+    </>
+  );
 }
 
 export default App;

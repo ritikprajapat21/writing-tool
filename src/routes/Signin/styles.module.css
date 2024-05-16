@@ -1,0 +1,24 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  padding: 5rem;
+  display: flex;
+  gap: 2rem;
+  height: 30vh;
+  width: 50vh;
+  flex-direction: column;
+  text-align: center;
+}
+
+.card button {
+  margin: 0 auto;
+  max-width: fit-content;
+}

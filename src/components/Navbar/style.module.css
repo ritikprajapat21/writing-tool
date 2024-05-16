@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link {
+  display: inline-block;
+}
+
+.secondPart {
+  display: flex;
+  gap: 1.5em;
+  align-items: center;
+}
+
+.image {
+  height: 2.5em;
+  width: 2.5em;
+  border-radius: 50%;
+}
+
+.image:hover {
+  cursor: pointer;
+  padding: 3px;
+  border: 2px solid white;
+}
