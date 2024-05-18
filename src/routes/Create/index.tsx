@@ -8,7 +8,6 @@ const Create = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
 
-	console.log(location);
 	useEffect(() => {
 		if (location?.state?.isModalOpen || location?.key === "default") {
 			setIsModalOpen(true);
@@ -20,8 +19,9 @@ const Create = () => {
 		navigate(-1);
 	};
 
-	const onChange = (e: RadioChangeEvent) => {
-		navigate(`/create/${e.target.value}`);
+	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+	const onChange = (e: any) => {
+		navigate(`/create/${e?.target.value}`);
 		setIsModalOpen(false);
 	};
 
@@ -41,8 +41,12 @@ const Create = () => {
 				}
 			>
 				<Radio.Group onChange={onChange} className={styles.links}>
-					<Radio value="text">Text</Radio>
-					<Radio value="image">Image</Radio>
+					<Radio value="text" onClick={onChange}>
+						Text
+					</Radio>
+					<Radio value="image" onClick={onChange}>
+						Image
+					</Radio>
 				</Radio.Group>
 			</Modal>
 			<Outlet />

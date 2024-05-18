@@ -11,6 +11,7 @@ import Create from "./routes/Create/index.tsx";
 import Edit from "./routes/Edit/index.tsx";
 import Delete from "./routes/Delete/index.tsx";
 import ListProvider from "./context/list/index.tsx";
+import TextModal from "./routes/Text/index.tsx";
 
 const router = createBrowserRouter([
 	{
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
 						path: "/create",
 						element: <Create />,
 						children: [
-							{ path: "/create/text", element: <div>Text</div> },
+							{ path: "/create/text", element: <TextModal /> },
 							{ path: "/create/image", element: <div>Image</div> },
 						],
 					},
