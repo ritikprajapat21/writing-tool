@@ -1,4 +1,4 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Button, Modal, Radio, type RadioChangeEvent } from "antd";
 import styles from "./style.module.css";
@@ -6,10 +6,14 @@ import styles from "./style.module.css";
 const Create = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const navigate = useNavigate();
+	const location = useLocation();
 
-	// useEffect(() => {
-	// 	setIsModalOpen(true);
-	// }, []);
+	console.log(location);
+	useEffect(() => {
+		if (location?.state?.isModalOpen || location?.key === "default") {
+			setIsModalOpen(true);
+		}
+	}, [location]);
 
 	const onCancel = () => {
 		setIsModalOpen(false);

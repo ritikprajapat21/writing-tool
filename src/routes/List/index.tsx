@@ -4,7 +4,6 @@ import { useList } from "../../hooks/useList";
 import { Button, Card, List } from "antd";
 import styles from "./styles.module.css";
 import { PlusSquareOutlined } from "@ant-design/icons";
-import CreateModal from "../../components/CreateModal";
 
 const CustomList = () => {
 	const { list } = useList();
@@ -50,16 +49,16 @@ const CustomList = () => {
 			) : (
 				<p>No content available. Create an item</p>
 			)}
-			{/* <Link
+			<Link
 				to="/create"
 				className={styles.list}
+				state={{ isModalOpen: true }}
 				style={{ display: "inline-block" }}
 			>
 				<Card style={{ height: 75, width: 75 }}>
 					<PlusSquareOutlined style={{ fontSize: 25 }} />
 				</Card>
-			</Link> */}
-			<CreateModal />
+			</Link>
 		</Content>
 	);
 };
