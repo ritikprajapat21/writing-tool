@@ -6,25 +6,24 @@ import CustomFooter from "./components/Footer";
 import { useAuth } from "./hooks/useAuth";
 
 function App() {
-  const { profile } = useAuth();
-  const navigate = useNavigate();
+	const { profile } = useAuth();
+	const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log(profile);
-    if (!profile) {
-      navigate("/signin");
-    }
-  }, [profile, navigate]);
+	// useEffect(() => {
+	// 	if (!profile) {
+	// 		navigate("/signin");
+	// 	}
+	// }, [profile, navigate]);
 
-  return (
-    <>
-      <Layout style={{ height: "100vh", width: "100vw" }}>
-        <Navbar />
-        <Outlet />
-        <CustomFooter />
-      </Layout>
-    </>
-  );
+	return (
+		<>
+			<Layout style={{ height: "100vh", width: "100vw" }}>
+				<Navbar />
+				<Outlet />
+				<CustomFooter />
+			</Layout>
+		</>
+	);
 }
 
 export default App;
