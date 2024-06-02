@@ -1,29 +1,29 @@
-import { useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import { Layout } from "antd";
 import CustomFooter from "./components/Footer";
+import { Layout } from "antd";
+import Navbar from "./components/Navbar";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "./hooks/useAuth";
+import { useEffect } from "react";
 
 function App() {
-	const { profile } = useAuth();
-	const navigate = useNavigate();
+  // const { profile } = useAuth();
+  // const navigate = useNavigate();
 
-	// useEffect(() => {
-	// 	if (!profile) {
-	// 		navigate("/signin");
-	// 	}
-	// }, [profile, navigate]);
+  // useEffect(() => {
+  // 	if (!profile) {
+  // 		navigate("/signin");
+  // 	}
+  // }, [profile, navigate]);
 
-	return (
-		<>
-			<Layout style={{ height: "100vh", width: "100vw" }}>
-				<Navbar />
-				<Outlet />
-				<CustomFooter />
-			</Layout>
-		</>
-	);
+  return (
+    <>
+      <Layout style={{ height: "100vh", width: "100vw" }}>
+        <Navbar />
+        <Outlet />
+        <CustomFooter />
+      </Layout>
+    </>
+  );
 }
 
 export default App;
