@@ -1,14 +1,16 @@
 import Dragger from "antd/es/upload/Dragger";
 import InboxOutlined from "@ant-design/icons/lib/icons/InboxOutlined";
 import { Modal, UploadProps } from "antd";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useList } from "../../hooks/useList";
 
 const ImageModal = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   // when adding to the list of all cards
   const [fileURL, setFileURL] = useState("");
   const navigate = useNavigate();
+  const { appendItem } = useList();
 
   useEffect(() => {
     setIsModalOpen(true);
@@ -16,20 +18,19 @@ const ImageModal = () => {
 
   const onCancel = () => {
     setIsModalOpen(false);
-    navigate(-1);
+    navigate("/create");
   };
 
   const props: UploadProps = {
     name: "file",
     multiple: false,
     accept: "image/*",
-    beforeUpload(file, FileList) {
-      console.log(file, FileList);
+    beforeUpload(file, _FileList) {
       const reader = new FileReader();
 
       reader.onload = () => {
         const url = reader.result as string;
-        setFileURL(url);
+        appendItem(url, false);
       };
       reader.readAsDataURL(file);
       return false;
@@ -37,8 +38,7 @@ const ImageModal = () => {
     onChange(info) {
       const { status } = info.file;
       if (status !== "uploading") {
-        console.log("Upl");
-        console.log(info.file, info.fileList);
+        navigate("/");
       }
       if (status === "done") {
         console.log("Done");

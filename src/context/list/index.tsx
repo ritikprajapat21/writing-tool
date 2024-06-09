@@ -1,30 +1,43 @@
 import { createContext, useState } from "react";
 
-interface List {
+interface Item {
   id: number;
   image?: string;
   text?: string;
 }
 
-interface ListContextType {
-  setList: React.Dispatch<React.SetStateAction<List[]>>;
-  list: List[];
+interface ItemContextType {
+  appendItem: (data: string, isText: boolean) => void;
+  items: Item[];
 }
 
-export const listContext = createContext<ListContextType>(
-  {} as ListContextType,
+export const listContext = createContext<ItemContextType>(
+  {} as ItemContextType,
 );
 
-const ListProvider: React.FC<{ children: React.ReactNode }> = ({
+const ItemProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [list, setList] = useState<List[]>([{ id: 1, text: "Hi" }] as List[]);
+  const [items, setItems] = useState<Item[]>([{ id: 1, text: "Hi" }] as Item[]);
+
+  const appendItem = (data: string, isText: boolean) => {
+    const obj = {} as Item;
+    obj.id = items.length;
+    if (isText) {
+      obj.text = data;
+    } else {
+      obj.image = data;
+    }
+
+    const newItems = [...items, obj];
+    setItems(newItems);
+  };
 
   return (
-    <listContext.Provider value={{ setList, list }}>
+    <listContext.Provider value={{ appendItem, items }}>
       {children}
     </listContext.Provider>
   );
 };
 
-export default ListProvider;
+export default ItemProvider;

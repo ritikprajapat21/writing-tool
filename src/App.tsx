@@ -17,7 +17,7 @@ function App() {
 
   return (
     <>
-      <Layout style={{ height: "100vh", width: "100vw" }}>
+      <Layout style={{ minHeight: "100vh", maxWidth: "100vw" }}>
         <Navbar />
         <Outlet />
         <CustomFooter />

@@ -3,5 +3,6 @@
 }
 
 .list {
-  margin: 1rem;
+  width: fit-content;
+  margin: 1rem auto;
 }
