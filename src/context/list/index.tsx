@@ -9,6 +9,7 @@ interface Item {
 interface ItemContextType {
   appendItem: (data: string, isText: boolean) => void;
   items: Item[];
+  updateItem: (item: Item, index: number) => void;
 }
 
 export const listContext = createContext<ItemContextType>(
@@ -18,7 +19,7 @@ export const listContext = createContext<ItemContextType>(
 const ItemProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [items, setItems] = useState<Item[]>([{ id: 1, text: "Hi" }] as Item[]);
+  const [items, setItems] = useState<Item[]>([{ id: 0, text: "Hi" }] as Item[]);
 
   const appendItem = (data: string, isText: boolean) => {
     const obj = {} as Item;
@@ -33,8 +34,14 @@ const ItemProvider: React.FC<{ children: React.ReactNode }> = ({
     setItems(newItems);
   };
 
+  const updateItem = (item: Item, index: number) => {
+    const newItems = [...items];
+    newItems.splice(index, 1, item);
+    setItems(newItems);
+  };
+
   return (
-    <listContext.Provider value={{ appendItem, items }}>
+    <listContext.Provider value={{ appendItem, items, updateItem }}>
       {children}
     </listContext.Provider>
   );
