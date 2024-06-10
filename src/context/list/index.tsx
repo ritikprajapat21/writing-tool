@@ -10,6 +10,7 @@ interface ItemContextType {
   appendItem: (data: string, isText: boolean) => void;
   items: Item[];
   updateItem: (item: Item, index: number) => void;
+  deleteItem: (index: number) => void;
 }
 
 export const listContext = createContext<ItemContextType>(
@@ -40,8 +41,14 @@ const ItemProvider: React.FC<{ children: React.ReactNode }> = ({
     setItems(newItems);
   };
 
+  const deleteItem = (index: number) => {
+    const newItems = [...items];
+    newItems.splice(index, 1);
+    setItems(newItems);
+  };
+
   return (
-    <listContext.Provider value={{ appendItem, items, updateItem }}>
+    <listContext.Provider value={{ appendItem, items, updateItem, deleteItem }}>
       {children}
     </listContext.Provider>
   );
