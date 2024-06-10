@@ -8,7 +8,6 @@ import { useList } from "../../hooks/useList";
 const ImageModal = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   // when adding to the list of all cards
-  const [fileURL, setFileURL] = useState("");
   const navigate = useNavigate();
   const { appendItem } = useList();
 

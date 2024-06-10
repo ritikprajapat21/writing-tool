@@ -6,3 +6,8 @@
   width: fit-content;
   margin: 1rem auto;
 }
+
+.noContent {
+  text-align: center;
+  margin: 1em;
+}

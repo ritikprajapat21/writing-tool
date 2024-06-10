@@ -50,7 +50,9 @@ const CustomList = () => {
           )}
         />
       ) : (
-        <p>No content available. Create an item</p>
+        <p className={styles.noContent}>
+          No items available. Create an <Link to="/create">item</Link>
+        </p>
       )}
       <Link
         to="/create"

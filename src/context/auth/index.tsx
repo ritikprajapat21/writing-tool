@@ -21,10 +21,10 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<User | null>(null);
 
-  // const login = useGoogleLogin({
-  //   onSuccess: (codeResponse) => setUser(codeResponse),
-  //   onError: (error) => console.log("Login failed:", error),
-  // });
+  const login = useGoogleLogin({
+    onSuccess: (codeResponse) => setUser(codeResponse),
+    onError: (error) => console.log("Login failed:", error),
+  });
 
   const logout = () => {
     googleLogout();
@@ -54,10 +54,10 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
   return (
     <>
-      {/*<authContext.Provider value={{ login, profile, logout }}>*/}
-      <Toaster position="top-right" toastOptions={{ duration: 3000 }} />
-      {children}
-      {/*</authContext.Provider>*/}
+      <authContext.Provider value={{ login, profile, logout }}>
+        <Toaster position="top-right" toastOptions={{ duration: 3000 }} />
+        {children}
+      </authContext.Provider>
     </>
   );
 };
