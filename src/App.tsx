@@ -6,14 +6,14 @@ import { useAuth } from "./hooks/useAuth";
 import { useEffect } from "react";
 
 function App() {
-  // const { profile } = useAuth();
-  // const navigate = useNavigate();
+  const { profile } = useAuth();
+  const navigate = useNavigate();
 
-  // useEffect(() => {
-  // 	if (!profile) {
-  // 		navigate("/signin");
-  // 	}
-  // }, [profile, navigate]);
+  useEffect(() => {
+    if (!profile) {
+      navigate("/signin");
+    }
+  }, [profile, navigate]);
 
   return (
     <>
