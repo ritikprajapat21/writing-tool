@@ -22,19 +22,9 @@ const CustomList = () => {
                 justifyContent: "center",
                 maxWidth: 500,
               }}
+              className={styles.card}
             >
-              <Card
-                actions={[
-                  <Link key="edit" to={`/edit/${item.id}`}>
-                    <Button type="primary">Edit</Button>
-                  </Link>,
-                  <Link key="delete" to={`/delete/${item.id}`}>
-                    <Button type="primary">Delete</Button>
-                  </Link>,
-                ]}
-                hoverable
-                style={{ minWidth: 160 }}
-              >
+              <Card hoverable style={{ minWidth: 160 }}>
                 {item?.text ? (
                   <p>{item?.text}</p>
                 ) : (
@@ -45,6 +35,14 @@ const CustomList = () => {
                     />
                   </Image.PreviewGroup>
                 )}
+                <div className={styles.cardActions}>
+                  <Link key="edit" to={`/edit/${item.id}`}>
+                    <Button type="primary">Edit</Button>
+                  </Link>
+                  <Link key="delete" to={`/delete/${item.id}`}>
+                    <Button type="primary">Delete</Button>
+                  </Link>
+                </div>
               </Card>
             </List.Item>
           )}

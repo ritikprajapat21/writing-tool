@@ -11,3 +11,29 @@
   text-align: center;
   margin: 1em;
 }
+
+.card {
+  transition: transform 0.6s ease;
+}
+
+.cardActions {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    visibility 0.3s ease,
+    opacity 1.5s linear;
+}
+
+.card:hover {
+  transform: scale(1.2);
+}
+
+.card:hover .cardActions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  gap: 4px;
+  opacity: 1;
+  visibility: visible;
+}
